@@ -1,205 +1,102 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from '@/components/ui/form';
 import { useLanguageContext } from '@/contexts/LanguageContext';
-import { translations, getTranslation } from '@/lib/translations';
-import { createLeadFormSchema, LeadFormData, LeadSubmission } from '@/lib/validation';
+import { submitLead, getUTMParams, trackAnalyticsEvent } from '@/lib/firestore';
+import { getFormVariant, FormVariant } from '@/lib/abtest';
+import { trackLead } from '@/lib/pixel';
+import { MinimalForm, MinimalFormData } from './forms/MinimalForm';
+import { StandardForm, StandardFormData } from './forms/StandardForm';
+import { SpeedForm, SpeedFormData } from './forms/SpeedForm';
+import { RiskReversal } from './RiskReversal';
+
+type FormData = MinimalFormData | StandardFormData | SpeedFormData;
 
 const LeadForm = () => {
   const { language } = useLanguageContext();
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [variant, setVariant] = useState<FormVariant>('standard');
+  const [hasStartedForm, setHasStartedForm] = useState(false);
 
-  const schema = createLeadFormSchema(language);
-  
-  const form = useForm<LeadFormData>({
-    resolver: zodResolver(schema),
-    defaultValues: {
-      name: '',
-      phone: '',
-      city: '',
-      service: '',
-    },
-  });
+  // Get and set form variant on mount
+  useEffect(() => {
+    const assignedVariant = getFormVariant();
+    setVariant(assignedVariant);
 
-  const getUTMParams = () => {
-    const params = new URLSearchParams(window.location.search);
-    return {
-      utm_source: params.get('utm_source') || undefined,
-      utm_medium: params.get('utm_medium') || undefined,
-      utm_campaign: params.get('utm_campaign') || undefined,
-      utm_content: params.get('utm_content') || undefined,
-    };
+    // Track page view with variant
+    trackAnalyticsEvent('page_view', assignedVariant);
+  }, []);
+
+  // Track form start on first interaction
+  const handleFormStart = () => {
+    if (!hasStartedForm) {
+      setHasStartedForm(true);
+      trackAnalyticsEvent('form_start', variant);
+    }
   };
 
-  const onSubmit = async (data: LeadFormData) => {
+  const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
 
-    const submission: LeadSubmission = {
-      ...data,
-      language,
-      timestamp: new Date().toISOString(),
-      ...getUTMParams(),
-      landing_page: window.location.href,
-      user_agent: navigator.userAgent,
-    };
-
     try {
-      // TODO: Replace with Firebase submission
-      console.log('Lead submission:', submission);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Redirect to thank you page
-      navigate('/thank-you');
+      const utmParams = getUTMParams();
+
+      const result = await submitLead({
+        name: 'name' in data ? data.name : undefined,
+        phone: data.phone,
+        city: 'city' in data ? data.city : '',
+        service: 'service' in data ? data.service : undefined,
+        language,
+        ...utmParams,
+        landingPageUrl: window.location.href,
+        formVariant: variant,
+        userAgent: navigator.userAgent
+      });
+
+      if (result.success) {
+        // Track conversion
+        trackLead();
+
+        // Redirect to thank you page with name if available
+        const name = 'name' in data ? data.name : '';
+        navigate(`/thank-you${name ? `?name=${encodeURIComponent(name)}` : ''}`);
+      } else {
+        console.error('Submission failed:', result.error);
+        setIsSubmitting(false);
+      }
     } catch (error) {
       console.error('Submission error:', error);
       setIsSubmitting(false);
     }
   };
 
+  const renderForm = () => {
+    const commonProps = {
+      onSubmit,
+      language,
+      isSubmitting
+    };
+
+    switch (variant) {
+      case 'minimal':
+        return <MinimalForm {...commonProps} />;
+      case 'speed':
+        return <SpeedForm {...commonProps} />;
+      case 'standard':
+      default:
+        return <StandardForm {...commonProps} />;
+    }
+  };
+
   return (
-    <section id="lead-form" className="py-16 px-4">
+    <section id="lead-form" className="py-16 px-4" onFocus={handleFormStart} onClick={handleFormStart}>
       <div className="max-w-xl mx-auto">
         <div className="bg-card p-8 rounded-2xl border border-border shadow-lg">
-          {/* Form Header */}
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-2">
-            {getTranslation(translations.form.headline, language)}
-          </h2>
-          <p className="text-muted-foreground text-center mb-8">
-            {getTranslation(translations.form.subheadline, language)}
-          </p>
-
-          {/* Form */}
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              {/* Name */}
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        placeholder={getTranslation(translations.form.fields.name, language)}
-                        className="h-12 text-base"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Phone */}
-              <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        type="tel"
-                        placeholder={getTranslation(translations.form.fields.phone, language)}
-                        className="h-12 text-base"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* City */}
-              <FormField
-                control={form.control}
-                name="city"
-                render={({ field }) => (
-                  <FormItem>
-                    <Select onValueChange={field.onChange} value={field.value}>
-                      <FormControl>
-                        <SelectTrigger className="h-12 text-base">
-                          <SelectValue placeholder={getTranslation(translations.form.fields.city, language)} />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {translations.cities.map((city) => (
-                          <SelectItem key={city} value={city}>
-                            {city}
-                          </SelectItem>
-                        ))}
-                        <SelectItem value="Other">
-                          {language === 'en' ? 'Other' : 'Otro'}
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Service */}
-              <FormField
-                control={form.control}
-                name="service"
-                render={({ field }) => (
-                  <FormItem>
-                    <Select onValueChange={field.onChange} value={field.value}>
-                      <FormControl>
-                        <SelectTrigger className="h-12 text-base">
-                          <SelectValue placeholder={getTranslation(translations.form.fields.service, language)} />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {translations.form.serviceOptions.map((option, index) => (
-                          <SelectItem key={index} value={getTranslation(option, 'en')}>
-                            {getTranslation(option, language)}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Submit Button */}
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full h-14 text-lg"
-                disabled={isSubmitting}
-              >
-                {isSubmitting
-                  ? getTranslation(translations.form.submitting, language)
-                  : getTranslation(translations.form.submit, language)}
-              </Button>
-
-              {/* Microcopy */}
-              <p className="text-center text-sm text-muted-foreground">
-                {getTranslation(translations.form.microcopy, language)}
-              </p>
-            </form>
-          </Form>
+          {renderForm()}
         </div>
+
+        {/* Risk Reversal - builds trust */}
+        <RiskReversal language={language} />
       </div>
     </section>
   );
