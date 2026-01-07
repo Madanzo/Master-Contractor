@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -20,7 +19,7 @@ import {
 } from '@/components/ui/form';
 import { Language } from '@/lib/translations';
 
-// Minimal form: Phone + City only (lowest friction)
+// Minimal form: Name + Phone + City (low friction, essential data)
 interface MinimalFormProps {
     onSubmit: (data: MinimalFormData) => Promise<void>;
     language: Language;
@@ -42,15 +41,18 @@ const translations = {
     en: {
         headline: 'Get Your Free Roof Inspection',
         subhead: "We'll call you within 15 minutes",
-        phone: 'Phone Number *',
+        name: 'Your Name',
+        namePlaceholder: 'First name',
+        phone: 'Phone Number',
         phonePlaceholder: '(956) 555-1234',
-        city: 'Your City *',
+        city: 'Your City',
         cityPlaceholder: 'Select your city',
         cityOther: 'Other',
         submit: 'Get My Free Inspection',
         submitting: 'Sending...',
         privacy: 'We respect your privacy. No spam, ever.',
         errors: {
+            name: 'Please enter your name',
             phone: 'Please enter a valid 10-digit phone number',
             city: 'Please select your city'
         }
@@ -58,15 +60,18 @@ const translations = {
     es: {
         headline: 'Obtén Tu Inspección Gratis',
         subhead: 'Te llamamos en 15 minutos',
-        phone: 'Número de Teléfono *',
+        name: 'Tu Nombre',
+        namePlaceholder: 'Nombre',
+        phone: 'Número de Teléfono',
         phonePlaceholder: '(956) 555-1234',
-        city: 'Tu Ciudad *',
+        city: 'Tu Ciudad',
         cityPlaceholder: 'Selecciona tu ciudad',
         cityOther: 'Otro',
         submit: 'Obtener Mi Inspección Gratis',
         submitting: 'Enviando...',
         privacy: 'Respetamos tu privacidad. Sin spam.',
         errors: {
+            name: 'Por favor ingresa tu nombre',
             phone: 'Por favor ingresa un número de 10 dígitos',
             city: 'Por favor selecciona tu ciudad'
         }
@@ -76,6 +81,7 @@ const translations = {
 const createSchema = (lang: Language) => {
     const t = translations[lang];
     return z.object({
+        name: z.string().min(1, { message: t.errors.name }),
         phone: z.string().regex(/^\(?[0-9]{3}\)?[-.\s]?[0-9]{3}[-.\s]?[0-9]{4}$/, {
             message: t.errors.phone
         }),
@@ -92,6 +98,7 @@ export function MinimalForm({ onSubmit, language, isSubmitting }: MinimalFormPro
     const form = useForm<MinimalFormData>({
         resolver: zodResolver(schema),
         defaultValues: {
+            name: '',
             phone: '',
             city: ''
         }
@@ -108,6 +115,28 @@ export function MinimalForm({ onSubmit, language, isSubmitting }: MinimalFormPro
                     <h3 className="text-2xl font-bold text-foreground">{t.headline}</h3>
                     <p className="text-accent font-medium mt-1">⚡ {t.subhead}</p>
                 </div>
+
+                {/* Name */}
+                <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                        <FormItem>
+                            <label className="block text-sm font-medium text-foreground mb-1">
+                                {t.name}
+                            </label>
+                            <FormControl>
+                                <Input
+                                    type="text"
+                                    placeholder={t.namePlaceholder}
+                                    className="h-12 text-base"
+                                    {...field}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
 
                 {/* Phone */}
                 <FormField
