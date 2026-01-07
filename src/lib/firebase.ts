@@ -4,6 +4,7 @@
 
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth'; // Added
 import { getAnalytics, isSupported } from 'firebase/analytics';
 
 const firebaseConfig = {
@@ -22,6 +23,9 @@ export const app = initializeApp(firebaseConfig);
 // Initialize Firestore
 export const db = getFirestore(app);
 
+// Initialize Auth
+export const auth = getAuth(app); // Added
+
 // Initialize Analytics (only in browser, not SSR)
 export const initAnalytics = async () => {
   if (await isSupported()) {
@@ -32,6 +36,6 @@ export const initAnalytics = async () => {
 
 // Check if Firebase is configured
 export const isFirebaseConfigured = () => {
-  return firebaseConfig.apiKey !== 'YOUR_API_KEY' && 
-         firebaseConfig.projectId !== 'YOUR_PROJECT_ID';
+  return firebaseConfig.apiKey !== 'YOUR_API_KEY' &&
+    firebaseConfig.projectId !== 'YOUR_PROJECT_ID';
 };

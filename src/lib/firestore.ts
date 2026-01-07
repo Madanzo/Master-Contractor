@@ -73,9 +73,27 @@ export async function submitLead(data: LeadData): Promise<{ success: boolean; le
         }) + ' CST';
 
         // Create lead document
+        // Create lead document (convert undefined to null for Firestore)
         const leadDoc: LeadDocument = {
-            ...data,
+            name: data.name || null, // Fix: Firestore doesn't accept undefined
             phone: cleanPhone,
+            city: data.city || 'Unknown', // Ensure city is present
+            service: data.service || 'General Inquiry',
+            language: data.language,
+
+            // Attribution
+            utm_source: data.utm_source || null,
+            utm_medium: data.utm_medium || null,
+            utm_campaign: data.utm_campaign || null,
+            utm_content: data.utm_content || null,
+            utm_term: data.utm_term || null,
+
+            // Metadata
+            landingPageUrl: data.landingPageUrl,
+            landingPageVariant: data.landingPageVariant || null,
+            formVariant: data.formVariant,
+            userAgent: data.userAgent,
+
             submittedAt: serverTimestamp(),
             localTime,
             status: 'new',

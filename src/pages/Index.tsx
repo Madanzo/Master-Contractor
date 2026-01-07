@@ -14,8 +14,8 @@ const Index = () => {
   return (
     <LanguageProvider>
       <main className="min-h-screen bg-background">
-        <Hero />
         <UrgencyBar />
+        <Hero />
         <SocialProof />
         <Services />
         <LocalTrust />
