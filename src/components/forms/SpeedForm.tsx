@@ -5,6 +5,13 @@ import { Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
+import {
     Form,
     FormControl,
     FormField,
@@ -13,37 +20,58 @@ import {
 } from '@/components/ui/form';
 import { Language } from '@/lib/translations';
 
-// Speed form: Phone only (maximum urgency, minimum friction)
+// Speed form: Phone + City (maximum urgency, minimum friction)
 interface SpeedFormProps {
     onSubmit: (data: SpeedFormData) => Promise<void>;
     language: Language;
     isSubmitting: boolean;
 }
 
+const CITIES = [
+    'Brownsville',
+    'Harlingen',
+    'San Benito',
+    'Weslaco',
+    'McAllen',
+    'Edinburg',
+    'Pharr',
+    'Mission'
+];
+
 const translations = {
     en: {
         available: 'Expert available now',
         headline: 'Get a Call in 5 Minutes',
-        subhead: "Enter your number. We'll call you right now.",
+        subhead: "Enter your info. We'll call you right now.",
         phone: 'Your Phone Number',
         phonePlaceholder: '(956) 555-1234',
+        city: 'Your City',
+        cityPlaceholder: 'Select city',
         submit: 'Call Me Now',
         submitting: 'Sending...',
         note: '📞 A roofing expert will call you within 5 minutes',
         privacy: 'One call. No spam. No obligation.',
-        error: 'Please enter a valid 10-digit phone number'
+        errors: {
+            phone: 'Please enter a valid 10-digit phone number',
+            city: 'Please select your city'
+        }
     },
     es: {
         available: 'Experto disponible ahora',
         headline: 'Recibe una Llamada en 5 Minutos',
-        subhead: 'Ingresa tu número. Te llamamos ahora.',
+        subhead: 'Ingresa tu info. Te llamamos ahora.',
         phone: 'Tu Número de Teléfono',
         phonePlaceholder: '(956) 555-1234',
+        city: 'Tu Ciudad',
+        cityPlaceholder: 'Selecciona',
         submit: 'Llámame Ahora',
         submitting: 'Enviando...',
         note: '📞 Un experto en techos te llamará en 5 minutos',
         privacy: 'Una llamada. Sin spam. Sin compromiso.',
-        error: 'Por favor ingresa un número de 10 dígitos'
+        errors: {
+            phone: 'Por favor ingresa un número de 10 dígitos',
+            city: 'Por favor selecciona tu ciudad'
+        }
     }
 };
 
@@ -51,8 +79,9 @@ const createSchema = (lang: Language) => {
     const t = translations[lang];
     return z.object({
         phone: z.string().regex(/^\(?[0-9]{3}\)?[-.\s]?[0-9]{3}[-.\s]?[0-9]{4}$/, {
-            message: t.error
-        })
+            message: t.errors.phone
+        }),
+        city: z.string().min(1, { message: t.errors.city })
     });
 };
 
@@ -65,7 +94,8 @@ export function SpeedForm({ onSubmit, language, isSubmitting }: SpeedFormProps) 
     const form = useForm<SpeedFormData>({
         resolver: zodResolver(schema),
         defaultValues: {
-            phone: ''
+            phone: '',
+            city: ''
         }
     });
 
@@ -100,11 +130,36 @@ export function SpeedForm({ onSubmit, language, isSubmitting }: SpeedFormProps) 
                                 <Input
                                     type="tel"
                                     placeholder={t.phonePlaceholder}
-                                    className="h-16 text-xl text-center border-2 focus:border-accent"
+                                    className="h-14 text-xl text-center border-2 focus:border-accent"
                                     {...field}
                                 />
                             </FormControl>
                             <FormMessage className="text-center" />
+                        </FormItem>
+                    )}
+                />
+
+                {/* City - Compact dropdown */}
+                <FormField
+                    control={form.control}
+                    name="city"
+                    render={({ field }) => (
+                        <FormItem>
+                            <Select onValueChange={field.onChange} value={field.value}>
+                                <FormControl>
+                                    <SelectTrigger className="h-12 text-base">
+                                        <SelectValue placeholder={t.cityPlaceholder} />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    {CITIES.map((city) => (
+                                        <SelectItem key={city} value={city}>
+                                            {city}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                            <FormMessage />
                         </FormItem>
                     )}
                 />
