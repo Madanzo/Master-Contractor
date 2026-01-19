@@ -41,9 +41,8 @@ const Hero = () => {
           className="absolute inset-0 w-full h-full object-cover"
           poster={heroBg}
         >
-          {/* Replace this source with your local file if you have one, e.g., /videos/hero.mp4 */}
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-construction-site-workers-during-the-day-34538-large.mp4" type="video/mp4" />
-          {/* Fallback image */}
+          {/* Custom hero video from Firebase Storage */}
+          <source src="https://firebasestorage.googleapis.com/v0/b/master-contractor-79b5c.firebasestorage.app/o/website%2Fvideos%2Fhero%20video.mp4?alt=media&token=4d845bee-f415-4370-b718-73ae55e99d8d" type="video/mp4" />
           <img src={heroBg} alt="Roofing background" className="absolute inset-0 w-full h-full object-cover" />
         </video>
 
