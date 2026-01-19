@@ -31,14 +31,24 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex flex-col">
       {/* Background with overlay */}
-      <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${heroBg})`,
-          }}
-        />
-        <div className="absolute inset-0 bg-hero-overlay/80" />
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster={heroBg}
+        >
+          {/* Replace this source with your local file if you have one, e.g., /videos/hero.mp4 */}
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-construction-site-workers-during-the-day-34538-large.mp4" type="video/mp4" />
+          {/* Fallback image */}
+          <img src={heroBg} alt="Roofing background" className="absolute inset-0 w-full h-full object-cover" />
+        </video>
+
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* Language Toggle */}
