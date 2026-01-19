@@ -7,7 +7,7 @@ declare global {
   }
 }
 
-export const PIXEL_ID = 'YOUR_PIXEL_ID'; // Replace with actual ID
+export const PIXEL_ID = '1501503834286747';
 
 export const trackPageView = () => {
   if (typeof window !== 'undefined' && window.fbq) {
