@@ -25,11 +25,13 @@ export function Navbar() {
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <Link to="/" className="flex items-center">
-                        <img
-                            src="https://firebasestorage.googleapis.com/v0/b/master-contractor-79b5c.firebasestorage.app/o/Logo%2Fmaester%20contractor%201%20bcard.png?alt=media&token=3fb4474a-24f0-4b28-9a51-a2aaac81ab67"
-                            alt="Master Contractor"
-                            className="h-14 w-auto invert brightness-90"
-                        />
+                        <div className="bg-offwhite rounded-lg px-3 py-1">
+                            <img
+                                src="https://firebasestorage.googleapis.com/v0/b/master-contractor-79b5c.firebasestorage.app/o/Logo%2Fmaester%20contractor%201%20bcard.png?alt=media&token=3fb4474a-24f0-4b28-9a51-a2aaac81ab67"
+                                alt="Master Contractor"
+                                className="h-10 w-auto"
+                            />
+                        </div>
                     </Link>
 
                     {/* Desktop Navigation */}
