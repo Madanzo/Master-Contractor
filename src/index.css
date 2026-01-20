@@ -8,43 +8,64 @@
 
 @layer base {
   :root {
-    /* Dark professional theme - trust-building for roofing */
-    --background: 220 20% 10%;
-    --foreground: 210 40% 98%;
+    /* Master Contractor Brand Colors
+       Charcoal: #1f2326 | Steel Gray: #6f7377 | Copper: #a86a43 | Burnt Bronze: #7a4a2f
+       Off-White: #f4f4f4 | White: #ffffff
+       Ratio: 60% Charcoal, 25% White, 10% Gray, 5% Copper
+    */
 
-    --card: 220 18% 14%;
-    --card-foreground: 210 40% 98%;
+    /* Dark professional theme */
+    --background: 210 8% 14%;
+    /* Charcoal #1f2326 */
+    --foreground: 0 0% 96%;
+    /* Off-White #f4f4f4 */
 
-    --popover: 220 18% 14%;
-    --popover-foreground: 210 40% 98%;
+    --card: 210 8% 18%;
+    --card-foreground: 0 0% 96%;
 
-    --primary: 25 95% 53%;
-    --primary-foreground: 220 20% 10%;
+    --popover: 210 8% 16%;
+    --popover-foreground: 0 0% 96%;
 
-    --secondary: 220 18% 20%;
-    --secondary-foreground: 210 40% 98%;
+    --primary: 22 44% 46%;
+    /* Copper #a86a43 */
+    --primary-foreground: 0 0% 100%;
 
-    --muted: 220 15% 25%;
-    --muted-foreground: 215 20% 65%;
+    --secondary: 210 4% 45%;
+    /* Steel Gray #6f7377 */
+    --secondary-foreground: 0 0% 100%;
 
-    --accent: 142 70% 45%;
-    --accent-foreground: 220 20% 10%;
+    --muted: 210 6% 25%;
+    --muted-foreground: 210 4% 55%;
+
+    --accent: 22 44% 46%;
+    /* Copper accent */
+    --accent-foreground: 210 8% 14%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 25%;
-    --input: 220 15% 20%;
-    --ring: 25 95% 53%;
+    --border: 210 6% 25%;
+    --input: 210 6% 20%;
+    --ring: 22 44% 46%;
 
     --radius: 0.5rem;
 
-    /* Custom tokens for landing page */
-    --hero-overlay: 220 20% 5%;
-    --urgency: 45 100% 50%;
-    --urgency-foreground: 220 20% 10%;
-    --trust-badge: 220 18% 18%;
-    --section-alt: 220 18% 12%;
+    /* Custom tokens */
+    --hero-overlay: 210 8% 10%;
+    --copper: 22 44% 46%;
+    /* #a86a43 */
+    --copper-dark: 22 44% 33%;
+    /* #7a4a2f */
+    --steel: 210 4% 45%;
+    /* #6f7377 */
+    --charcoal: 210 8% 14%;
+    /* #1f2326 */
+    --offwhite: 0 0% 96%;
+    /* #f4f4f4 */
+    --urgency: 22 44% 46%;
+    --urgency-foreground: 0 0% 100%;
+    --trust-badge: 210 6% 20%;
+    --section-alt: 210 8% 12%;
   }
 }
 

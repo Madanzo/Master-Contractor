@@ -51,6 +51,13 @@ export default {
           DEFAULT: "hsl(var(--urgency))",
           foreground: "hsl(var(--urgency-foreground))",
         },
+        copper: {
+          DEFAULT: "#a86a43",
+          dark: "#7a4a2f",
+        },
+        steel: "#6f7377",
+        charcoal: "#1f2326",
+        offwhite: "#f4f4f4",
         "hero-overlay": "hsl(var(--hero-overlay))",
         "trust-badge": "hsl(var(--trust-badge))",
         "section-alt": "hsl(var(--section-alt))",

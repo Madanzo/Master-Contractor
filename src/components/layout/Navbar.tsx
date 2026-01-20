@@ -20,13 +20,13 @@ export function Navbar() {
     const isActive = (href: string) => location.pathname === href;
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-charcoal/95 backdrop-blur-sm border-b border-steel/20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <Link to="/" className="flex items-center gap-2">
                         <span className="text-xl font-bold text-white">
-                            Master<span className="text-amber-500">Contractor</span>
+                            Master<span className="text-copper">Contractor</span>
                         </span>
                     </Link>
 
@@ -37,8 +37,8 @@ export function Navbar() {
                                 key={link.href}
                                 to={link.href}
                                 className={`text-sm font-medium transition-colors ${isActive(link.href)
-                                        ? 'text-amber-500'
-                                        : 'text-slate-300 hover:text-white'
+                                    ? 'text-copper'
+                                    : 'text-steel hover:text-white'
                                     }`}
                             >
                                 {link.name}
@@ -48,11 +48,11 @@ export function Navbar() {
 
                     {/* CTA */}
                     <div className="hidden md:flex items-center gap-4">
-                        <a href={`tel:${PHONE_NUMBER}`} className="flex items-center gap-2 text-slate-300 hover:text-white">
+                        <a href={`tel:${PHONE_NUMBER}`} className="flex items-center gap-2 text-steel hover:text-white">
                             <Phone className="w-4 h-4" />
                             <span className="text-sm">(956) 525-9866</span>
                         </a>
-                        <Button asChild className="bg-amber-500 hover:bg-amber-600 text-slate-900 font-semibold">
+                        <Button asChild className="bg-copper hover:bg-copper-dark text-white font-semibold">
                             <Link to="/free-inspection">Free Quote</Link>
                         </Button>
                     </div>
@@ -69,7 +69,7 @@ export function Navbar() {
 
             {/* Mobile Menu */}
             {mobileMenuOpen && (
-                <div className="md:hidden bg-slate-900 border-t border-slate-800">
+                <div className="md:hidden bg-charcoal border-t border-steel/20">
                     <div className="px-4 py-4 space-y-3">
                         {navLinks.map((link) => (
                             <Link
@@ -77,15 +77,15 @@ export function Navbar() {
                                 to={link.href}
                                 onClick={() => setMobileMenuOpen(false)}
                                 className={`block py-2 text-base font-medium ${isActive(link.href)
-                                        ? 'text-amber-500'
-                                        : 'text-slate-300'
+                                    ? 'text-copper'
+                                    : 'text-steel'
                                     }`}
                             >
                                 {link.name}
                             </Link>
                         ))}
-                        <div className="pt-4 border-t border-slate-800">
-                            <Button asChild className="w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-semibold">
+                        <div className="pt-4 border-t border-steel/20">
+                            <Button asChild className="w-full bg-copper hover:bg-copper-dark text-white font-semibold">
                                 <Link to="/free-inspection" onClick={() => setMobileMenuOpen(false)}>
                                     Get Free Quote
                                 </Link>

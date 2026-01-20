@@ -28,15 +28,15 @@ export function SiteFooter() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-slate-950 border-t border-slate-800">
+        <footer className="bg-charcoal border-t border-charcoal">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Brand */}
                     <div className="lg:col-span-1">
                         <Link to="/" className="text-xl font-bold text-white">
-                            Master<span className="text-amber-500">Contractor</span>
+                            Master<span className="text-copper">Contractor</span>
                         </Link>
-                        <p className="mt-4 text-slate-400 text-sm">
+                        <p className="mt-4 text-steel text-sm">
                             Building your dreams into reality since 2015. Licensed, insured, and committed to excellence.
                         </p>
                     </div>
@@ -51,7 +51,7 @@ export function SiteFooter() {
                                 <li key={link.href}>
                                     <Link
                                         to={link.href}
-                                        className="text-slate-400 hover:text-amber-500 text-sm transition-colors"
+                                        className="text-steel hover:text-copper text-sm transition-colors"
                                     >
                                         {link.name}
                                     </Link>
@@ -70,7 +70,7 @@ export function SiteFooter() {
                                 <li key={link.href}>
                                     <Link
                                         to={link.href}
-                                        className="text-slate-400 hover:text-amber-500 text-sm transition-colors"
+                                        className="text-steel hover:text-copper text-sm transition-colors"
                                     >
                                         {link.name}
                                     </Link>
@@ -88,7 +88,7 @@ export function SiteFooter() {
                             <li>
                                 <a
                                     href={COMPANY_INFO.phoneLink}
-                                    className="flex items-center gap-2 text-slate-400 hover:text-amber-500 text-sm transition-colors"
+                                    className="flex items-center gap-2 text-steel hover:text-copper text-sm transition-colors"
                                 >
                                     <Phone className="w-4 h-4" />
                                     {COMPANY_INFO.phone}
@@ -97,7 +97,7 @@ export function SiteFooter() {
                             <li>
                                 <a
                                     href={`mailto:${COMPANY_INFO.email}`}
-                                    className="flex items-center gap-2 text-slate-400 hover:text-amber-500 text-sm transition-colors"
+                                    className="flex items-center gap-2 text-steel hover:text-copper text-sm transition-colors"
                                 >
                                     <Mail className="w-4 h-4" />
                                     {COMPANY_INFO.email}
@@ -108,7 +108,7 @@ export function SiteFooter() {
                                     href={COMPANY_INFO.mapsLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-start gap-2 text-slate-400 hover:text-amber-500 text-sm transition-colors"
+                                    className="flex items-start gap-2 text-steel hover:text-copper text-sm transition-colors"
                                 >
                                     <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
                                     {COMPANY_INFO.address}
@@ -119,7 +119,7 @@ export function SiteFooter() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div className="mt-12 pt-8 border-t border-charcoal flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-slate-500 text-sm">
                         © {currentYear} Master Contractor. All rights reserved.
                     </p>

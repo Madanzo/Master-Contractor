@@ -53,16 +53,16 @@ const Contact = () => {
     };
 
     return (
-        <div className="min-h-screen bg-slate-900">
+        <div className="min-h-screen bg-charcoal">
             <Navbar />
 
             {/* Hero */}
-            <section className="pt-24 pb-16 bg-slate-800">
+            <section className="pt-24 pb-16 bg-charcoal">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        Contact <span className="text-amber-500">Us</span>
+                        Contact <span className="text-copper">Us</span>
                     </h1>
-                    <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+                    <p className="text-steel text-lg max-w-2xl mx-auto">
                         Ready to start your project? Get in touch with our team today.
                     </p>
                 </div>
@@ -75,24 +75,24 @@ const Contact = () => {
                         {/* Contact Info */}
                         <div>
                             <h2 className="text-2xl font-bold text-white mb-6">Get in Touch</h2>
-                            <p className="text-slate-400 mb-8">
+                            <p className="text-steel mb-8">
                                 We're here to help with your construction needs. Reach out to us through any of the following channels, or fill out the form and we'll get back to you within 24 hours.
                             </p>
 
                             <div className="space-y-4 mb-8">
                                 {contactInfo.map((item, index) => (
                                     <div key={index} className="flex items-start gap-4">
-                                        <div className="w-10 h-10 bg-amber-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                            <item.icon className="w-5 h-5 text-amber-500" />
+                                        <div className="w-10 h-10 bg-copper/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <item.icon className="w-5 h-5 text-copper" />
                                         </div>
                                         <div>
-                                            <p className="text-slate-400 text-sm">{item.label}</p>
+                                            <p className="text-steel text-sm">{item.label}</p>
                                             {item.href ? (
                                                 <a
                                                     href={item.href}
                                                     target={item.href.startsWith('http') ? '_blank' : undefined}
                                                     rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                                                    className="text-white hover:text-amber-500 transition-colors"
+                                                    className="text-white hover:text-copper transition-colors"
                                                 >
                                                     {item.value}
                                                 </a>
@@ -120,11 +120,11 @@ const Contact = () => {
                         </div>
 
                         {/* Contact Form */}
-                        <div className="bg-slate-800 border border-slate-700 rounded-xl p-8">
+                        <div className="bg-charcoal border border-slate-700 rounded-xl p-8">
                             <h2 className="text-2xl font-bold text-white mb-6">Send us a Message</h2>
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                                    <label className="block text-sm font-medium text-steel mb-2">
                                         Name *
                                     </label>
                                     <Input
@@ -132,11 +132,11 @@ const Contact = () => {
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                         placeholder="Your name"
                                         required
-                                        className="bg-slate-900 border-slate-600 text-white"
+                                        className="bg-charcoal border-slate-600 text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                                    <label className="block text-sm font-medium text-steel mb-2">
                                         Email *
                                     </label>
                                     <Input
@@ -145,11 +145,11 @@ const Contact = () => {
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         placeholder="your@email.com"
                                         required
-                                        className="bg-slate-900 border-slate-600 text-white"
+                                        className="bg-charcoal border-slate-600 text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                                    <label className="block text-sm font-medium text-steel mb-2">
                                         Phone
                                     </label>
                                     <Input
@@ -157,11 +157,11 @@ const Contact = () => {
                                         value={formData.phone}
                                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                         placeholder="(956) 555-1234"
-                                        className="bg-slate-900 border-slate-600 text-white"
+                                        className="bg-charcoal border-slate-600 text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                                    <label className="block text-sm font-medium text-steel mb-2">
                                         Message *
                                     </label>
                                     <Textarea
@@ -170,13 +170,13 @@ const Contact = () => {
                                         placeholder="Tell us about your project..."
                                         required
                                         rows={5}
-                                        className="bg-slate-900 border-slate-600 text-white"
+                                        className="bg-charcoal border-slate-600 text-white"
                                     />
                                 </div>
                                 <Button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className="w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-semibold"
+                                    className="w-full bg-copper hover:bg-copper-dark text-charcoal font-semibold"
                                 >
                                     <Send className="w-4 h-4 mr-2" />
                                     {isSubmitting ? 'Sending...' : 'Send Message'}

@@ -65,23 +65,23 @@ const Portfolio = () => {
         : projects.filter(p => p.category === activeCategory);
 
     return (
-        <div className="min-h-screen bg-slate-900">
+        <div className="min-h-screen bg-charcoal">
             <Navbar />
 
             {/* Hero */}
-            <section className="pt-24 pb-16 bg-slate-800">
+            <section className="pt-24 pb-16 bg-charcoal">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        Our <span className="text-amber-500">Portfolio</span>
+                        Our <span className="text-copper">Portfolio</span>
                     </h1>
-                    <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+                    <p className="text-steel text-lg max-w-2xl mx-auto">
                         Browse our completed projects across commercial, residential, industrial, and roofing sectors.
                     </p>
                 </div>
             </section>
 
             {/* Filter */}
-            <section className="py-8 border-b border-slate-800">
+            <section className="py-8 border-b border-charcoal">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-wrap justify-center gap-3">
                         {categories.map((category) => (
@@ -89,8 +89,8 @@ const Portfolio = () => {
                                 key={category}
                                 onClick={() => setActiveCategory(category)}
                                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${activeCategory === category
-                                        ? 'bg-amber-500 text-slate-900'
-                                        : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                                        ? 'bg-copper text-charcoal'
+                                        : 'bg-charcoal text-steel hover:bg-slate-700'
                                     }`}
                             >
                                 {category}
@@ -107,7 +107,7 @@ const Portfolio = () => {
                         {filteredProjects.map((project, index) => (
                             <div
                                 key={index}
-                                className="group bg-slate-800 border border-slate-700 rounded-xl overflow-hidden hover:border-amber-500/50 transition-all"
+                                className="group bg-charcoal border border-slate-700 rounded-xl overflow-hidden hover:border-copper/50 transition-all"
                             >
                                 <div className="relative h-48 overflow-hidden">
                                     <img
@@ -116,7 +116,7 @@ const Portfolio = () => {
                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                     />
                                     <div className="absolute top-3 left-3">
-                                        <span className="bg-amber-500 text-slate-900 text-xs font-semibold px-2 py-1 rounded">
+                                        <span className="bg-copper text-charcoal text-xs font-semibold px-2 py-1 rounded">
                                             {project.category}
                                         </span>
                                     </div>
@@ -125,7 +125,7 @@ const Portfolio = () => {
                                     <h3 className="text-lg font-semibold text-white mb-1">
                                         {project.title}
                                     </h3>
-                                    <p className="text-slate-400 text-sm">
+                                    <p className="text-steel text-sm">
                                         {project.description}
                                     </p>
                                 </div>
@@ -136,15 +136,15 @@ const Portfolio = () => {
             </section>
 
             {/* CTA */}
-            <section className="py-16 bg-slate-800">
+            <section className="py-16 bg-charcoal">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h2 className="text-3xl font-bold text-white mb-4">
                         Ready to Start Your Project?
                     </h2>
-                    <p className="text-slate-400 mb-8">
+                    <p className="text-steel mb-8">
                         Let's add your project to our portfolio.
                     </p>
-                    <Button asChild size="lg" className="bg-amber-500 hover:bg-amber-600 text-slate-900 font-semibold">
+                    <Button asChild size="lg" className="bg-copper hover:bg-copper-dark text-charcoal font-semibold">
                         <Link to="/free-inspection">Get Free Quote</Link>
                     </Button>
                 </div>

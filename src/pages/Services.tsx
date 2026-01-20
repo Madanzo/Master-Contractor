@@ -49,16 +49,16 @@ const services = [
 
 const Services = () => {
     return (
-        <div className="min-h-screen bg-slate-900">
+        <div className="min-h-screen bg-charcoal">
             <Navbar />
 
             {/* Hero */}
-            <section className="pt-24 pb-16 bg-slate-800">
+            <section className="pt-24 pb-16 bg-charcoal">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        Our <span className="text-amber-500">Services</span>
+                        Our <span className="text-copper">Services</span>
                     </h1>
-                    <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+                    <p className="text-steel text-lg max-w-2xl mx-auto">
                         Comprehensive construction solutions for commercial, residential, and industrial projects in the Rio Grande Valley.
                     </p>
                 </div>
@@ -85,23 +85,23 @@ const Services = () => {
                                 {/* Content */}
                                 <div className="lg:w-1/2">
                                     <div className="flex items-center gap-3 mb-4">
-                                        <service.icon className="w-8 h-8 text-amber-500" />
+                                        <service.icon className="w-8 h-8 text-copper" />
                                         <h2 className="text-2xl md:text-3xl font-bold text-white">
                                             {service.title}
                                         </h2>
                                     </div>
-                                    <p className="text-slate-400 mb-6">
+                                    <p className="text-steel mb-6">
                                         {service.description}
                                     </p>
                                     <div className="grid grid-cols-2 gap-2 mb-6">
                                         {service.features.map((feature, i) => (
-                                            <div key={i} className="flex items-center gap-2 text-slate-300 text-sm">
-                                                <div className="w-1.5 h-1.5 bg-amber-500 rounded-full" />
+                                            <div key={i} className="flex items-center gap-2 text-steel text-sm">
+                                                <div className="w-1.5 h-1.5 bg-copper rounded-full" />
                                                 {feature}
                                             </div>
                                         ))}
                                     </div>
-                                    <Button asChild className="bg-amber-500 hover:bg-amber-600 text-slate-900 font-semibold">
+                                    <Button asChild className="bg-copper hover:bg-copper-dark text-charcoal font-semibold">
                                         <Link to={service.href}>
                                             Learn More <ArrowRight className="ml-2 w-4 h-4" />
                                         </Link>
@@ -114,15 +114,15 @@ const Services = () => {
             </section>
 
             {/* CTA */}
-            <section className="py-16 bg-slate-800">
+            <section className="py-16 bg-charcoal">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h2 className="text-3xl font-bold text-white mb-4">
                         Need a Custom Solution?
                     </h2>
-                    <p className="text-slate-400 mb-8">
+                    <p className="text-steel mb-8">
                         Every project is unique. Let's discuss your specific requirements.
                     </p>
-                    <Button asChild size="lg" className="bg-amber-500 hover:bg-amber-600 text-slate-900 font-semibold">
+                    <Button asChild size="lg" className="bg-copper hover:bg-copper-dark text-charcoal font-semibold">
                         <Link to="/contact">Get in Touch</Link>
                     </Button>
                 </div>
