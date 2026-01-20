@@ -20,29 +20,27 @@ export function Navbar() {
     const isActive = (href: string) => location.pathname === href;
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-charcoal/95 backdrop-blur-sm border-b border-steel/20">
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-offwhite/95 backdrop-blur-sm border-b border-steel/20 shadow-sm">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
-                    {/* Logo */}
+                <div className="flex items-center justify-between h-20">
+                    {/* Logo - larger, natural colors */}
                     <Link to="/" className="flex items-center">
-                        <div className="bg-offwhite rounded-lg px-3 py-1">
-                            <img
-                                src="https://firebasestorage.googleapis.com/v0/b/master-contractor-79b5c.firebasestorage.app/o/Logo%2Fmaester%20contractor%201%20bcard.png?alt=media&token=3fb4474a-24f0-4b28-9a51-a2aaac81ab67"
-                                alt="Master Contractor"
-                                className="h-10 w-auto"
-                            />
-                        </div>
+                        <img
+                            src="https://firebasestorage.googleapis.com/v0/b/master-contractor-79b5c.firebasestorage.app/o/Logo%2Fmaester%20contractor%201%20bcard.png?alt=media&token=3fb4474a-24f0-4b28-9a51-a2aaac81ab67"
+                            alt="Master Contractor"
+                            className="h-14 w-auto"
+                        />
                     </Link>
 
-                    {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center gap-6">
+                    {/* Desktop Navigation - dark text on light bg */}
+                    <div className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
                                 to={link.href}
                                 className={`text-sm font-medium transition-colors ${isActive(link.href)
                                     ? 'text-copper'
-                                    : 'text-steel hover:text-white'
+                                    : 'text-charcoal hover:text-copper'
                                     }`}
                             >
                                 {link.name}
@@ -52,9 +50,9 @@ export function Navbar() {
 
                     {/* CTA */}
                     <div className="hidden md:flex items-center gap-4">
-                        <a href={`tel:${PHONE_NUMBER}`} className="flex items-center gap-2 text-steel hover:text-white">
+                        <a href={`tel:${PHONE_NUMBER}`} className="flex items-center gap-2 text-charcoal hover:text-copper">
                             <Phone className="w-4 h-4" />
-                            <span className="text-sm">(956) 525-9866</span>
+                            <span className="text-sm font-medium">(956) 525-9866</span>
                         </a>
                         <Button asChild className="bg-copper hover:bg-copper-dark text-white font-semibold">
                             <Link to="/free-inspection">Free Quote</Link>
@@ -63,7 +61,7 @@ export function Navbar() {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="md:hidden text-white"
+                        className="md:hidden text-charcoal"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
                         {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -71,9 +69,9 @@ export function Navbar() {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu - light background */}
             {mobileMenuOpen && (
-                <div className="md:hidden bg-charcoal border-t border-steel/20">
+                <div className="md:hidden bg-offwhite border-t border-steel/20">
                     <div className="px-4 py-4 space-y-3">
                         {navLinks.map((link) => (
                             <Link
@@ -82,7 +80,7 @@ export function Navbar() {
                                 onClick={() => setMobileMenuOpen(false)}
                                 className={`block py-2 text-base font-medium ${isActive(link.href)
                                     ? 'text-copper'
-                                    : 'text-steel'
+                                    : 'text-charcoal'
                                     }`}
                             >
                                 {link.name}
