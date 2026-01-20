@@ -28,7 +28,7 @@ export function Navbar() {
                         <img
                             src="https://firebasestorage.googleapis.com/v0/b/master-contractor-79b5c.firebasestorage.app/o/Logo%2Fmaester%20contractor%201%20bcard.png?alt=media&token=3fb4474a-24f0-4b28-9a51-a2aaac81ab67"
                             alt="Master Contractor"
-                            className="h-10 w-auto"
+                            className="h-14 w-auto invert brightness-90"
                         />
                     </Link>
 
