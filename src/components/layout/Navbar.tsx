@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import LanguageToggle from '@/components/LanguageToggle';
 
 const PHONE_NUMBER = '9565259866';
 
@@ -50,6 +51,7 @@ export function Navbar() {
 
                     {/* CTA */}
                     <div className="hidden md:flex items-center gap-4">
+                        <LanguageToggle />
                         <a href={`tel:${PHONE_NUMBER}`} className="flex items-center gap-2 text-charcoal hover:text-copper">
                             <Phone className="w-4 h-4" />
                             <span className="text-sm font-medium">(956) 525-9866</span>

@@ -56,8 +56,8 @@ const Home = () => {
                         Building Your Dreams
                         <span className="block text-copper">Into Reality</span>
                     </h1>
-                    <p className="text-xl md:text-2xl text-steel mb-8 max-w-3xl mx-auto">
-                        Expert construction services in the Rio Grande Valley since 2015. Commercial, residential, and industrial projects delivered with excellence.
+                    <p className="text-xl md:text-2xl text-offwhite/80 mb-8 max-w-3xl mx-auto">
+                        Trusted by families and businesses across the Valley. Bilingual crews, on-time delivery, and craftsmanship that stands the test of time.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button asChild size="lg" className="bg-copper hover:bg-copper-dark text-charcoal font-semibold text-lg px-8 py-6 h-auto">
