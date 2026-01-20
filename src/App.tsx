@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 // Main Website Pages
 import Home from "./pages/Home";
@@ -26,40 +27,42 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          {/* Main Website */}
-          <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/contact" element={<Contact />} />
+    <LanguageProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            {/* Main Website */}
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/contact" element={<Contact />} />
 
-          {/* Lead Gen Landing Page (independent) */}
-          <Route path="/free-inspection" element={<Index />} />
-          <Route path="/roofing" element={<Index />} />
-          <Route path="/thank-you" element={<ThankYou />} />
+            {/* Lead Gen Landing Page (independent) */}
+            <Route path="/free-inspection" element={<Index />} />
+            <Route path="/roofing" element={<Index />} />
+            <Route path="/thank-you" element={<ThankYou />} />
 
-          {/* Auth */}
-          <Route path="/login" element={<Login />} />
+            {/* Auth */}
+            <Route path="/login" element={<Login />} />
 
-          {/* Protected Admin Routes */}
-          <Route path="/admin" element={
-            <ProtectedRoute>
-              <DashboardLayout>
-                <LeadsTable />
-              </DashboardLayout>
-            </ProtectedRoute>
-          } />
+            {/* Protected Admin Routes */}
+            <Route path="/admin" element={
+              <ProtectedRoute>
+                <DashboardLayout>
+                  <LeadsTable />
+                </DashboardLayout>
+              </ProtectedRoute>
+            } />
 
-          {/* 404 */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+            {/* 404 */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </LanguageProvider>
   </QueryClientProvider>
 );
 
