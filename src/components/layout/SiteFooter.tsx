@@ -33,8 +33,12 @@ export function SiteFooter() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Brand */}
                     <div className="lg:col-span-1">
-                        <Link to="/" className="text-xl font-bold text-white">
-                            Master<span className="text-copper">Contractor</span>
+                        <Link to="/">
+                            <img
+                                src="https://firebasestorage.googleapis.com/v0/b/master-contractor-79b5c.firebasestorage.app/o/Logo%2Fmaester%20contractor%201%20bcard.png?alt=media&token=3fb4474a-24f0-4b28-9a51-a2aaac81ab67"
+                                alt="Master Contractor"
+                                className="h-12 w-auto"
+                            />
                         </Link>
                         <p className="mt-4 text-steel text-sm">
                             Building your dreams into reality since 2015. Licensed, insured, and committed to excellence.
