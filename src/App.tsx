@@ -3,8 +3,19 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Main Website Pages
+import Home from "./pages/Home";
+import Services from "./pages/Services";
+import About from "./pages/About";
+import Portfolio from "./pages/Portfolio";
+import Contact from "./pages/Contact";
+
+// Lead Gen Landing Page (independent)
 import Index from "./pages/Index";
 import ThankYou from "./pages/ThankYou";
+
+// Admin
 import NotFound from "./pages/NotFound";
 import Login from "./pages/admin/Login";
 import { ProtectedRoute } from "./components/admin/ProtectedRoute";
@@ -20,9 +31,19 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<Index />} />
+          {/* Main Website */}
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/contact" element={<Contact />} />
+
+          {/* Lead Gen Landing Page (independent) */}
+          <Route path="/free-inspection" element={<Index />} />
+          <Route path="/roofing" element={<Index />} />
           <Route path="/thank-you" element={<ThankYou />} />
+
+          {/* Auth */}
           <Route path="/login" element={<Login />} />
 
           {/* Protected Admin Routes */}
@@ -34,7 +55,7 @@ const App = () => (
             </ProtectedRoute>
           } />
 
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
@@ -43,3 +64,4 @@ const App = () => (
 );
 
 export default App;
+
