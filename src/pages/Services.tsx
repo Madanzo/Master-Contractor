@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Home, Building2, Wrench, ClipboardList, HardHat } from 'lucide-react';
+import { ArrowRight, Home, Building2, Wrench, ClipboardList, HardHat, Zap, LayoutGrid, Droplets, Paintbrush } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/layout/Navbar';
 import SiteFooter from '@/components/layout/SiteFooter';
@@ -30,18 +30,42 @@ const services = [
         image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600',
     },
     {
+        title: 'Electrical Services',
+        description: 'Licensed electricians providing safe, reliable electrical services for homes and businesses. From panel upgrades to complete rewiring.',
+        icon: Zap,
+        features: ['Panel Upgrades', 'Rewiring', 'Lighting Installation', 'Outlet Installation', 'Ceiling Fans', 'Emergency Repairs'],
+        href: '/services/electrical',
+        image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600',
+    },
+    {
+        title: 'Drywall & Sheetrock',
+        description: 'Professional drywall installation, repair, and finishing. Expert texturing and seamless repairs for homes and commercial spaces.',
+        icon: LayoutGrid,
+        features: ['Drywall Installation', 'Drywall Repair', 'Texture Application', 'Popcorn Ceiling Removal', 'Finishing & Taping', 'Soundproofing'],
+        href: '/services/drywall',
+        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600',
+    },
+    {
+        title: 'Plumbing Services',
+        description: 'Licensed plumbers providing reliable plumbing services. From leak repairs to water heater installation and 24/7 emergency service.',
+        icon: Droplets,
+        features: ['Leak Repair', 'Water Heaters', 'Drain Cleaning', 'Fixture Installation', 'Pipe Repair', 'Emergency Service'],
+        href: '/services/plumbing',
+        image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=600',
+    },
+    {
+        title: 'Painting Services',
+        description: 'Professional painting for interiors and exteriors. Premium paints, expert application, and finishes that last.',
+        icon: Paintbrush,
+        features: ['Interior Painting', 'Exterior Painting', 'Cabinet Painting', 'Commercial Painting', 'Pressure Washing', 'Color Consultation'],
+        href: '/services/painting',
+        image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=600',
+    },
+    {
         title: 'Project Management',
         description: 'Expert project oversight ensuring your construction project stays on time, within budget, and meets the highest quality standards.',
         icon: ClipboardList,
         features: ['Budget Management', 'Timeline Coordination', 'Contractor Oversight', 'Quality Control', 'Permit Handling', 'Progress Reports'],
-        href: '/contact',
-        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600',
-    },
-    {
-        title: 'Design-Build',
-        description: 'Streamlined single-source responsibility for both design and construction, ensuring seamless project delivery from concept to completion.',
-        icon: Wrench,
-        features: ['Concept Development', 'Architectural Design', 'Engineering', 'Construction', 'Interior Finishes', 'Landscaping'],
         href: '/contact',
         image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600',
     },

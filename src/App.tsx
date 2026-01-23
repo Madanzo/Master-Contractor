@@ -12,6 +12,15 @@ import About from "./pages/About";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 
+// Service Detail Pages
+import RoofingPage from "./pages/services/RoofingPage";
+import CommercialPage from "./pages/services/CommercialPage";
+import ResidentialPage from "./pages/services/ResidentialPage";
+import ElectricalPage from "./pages/services/ElectricalPage";
+import DrywallPage from "./pages/services/DrywallPage";
+import PlumbingPage from "./pages/services/PlumbingPage";
+import PaintingPage from "./pages/services/PaintingPage";
+
 // Lead Gen Landing Page (independent)
 import Index from "./pages/Index";
 import ThankYou from "./pages/ThankYou";
@@ -40,6 +49,15 @@ const App = () => (
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
 
+            {/* Service Detail Pages */}
+            <Route path="/services/roofing" element={<RoofingPage />} />
+            <Route path="/services/commercial" element={<CommercialPage />} />
+            <Route path="/services/residential" element={<ResidentialPage />} />
+            <Route path="/services/electrical" element={<ElectricalPage />} />
+            <Route path="/services/drywall" element={<DrywallPage />} />
+            <Route path="/services/plumbing" element={<PlumbingPage />} />
+            <Route path="/services/painting" element={<PaintingPage />} />
+
             {/* Lead Gen Landing Page (independent) */}
             <Route path="/free-inspection" element={<Index />} />
             <Route path="/roofing" element={<Index />} />
@@ -67,4 +85,3 @@ const App = () => (
 );
 
 export default App;
-

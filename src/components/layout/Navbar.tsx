@@ -3,20 +3,23 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import LanguageToggle from '@/components/LanguageToggle';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const PHONE_NUMBER = '9565259866';
-
-const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'About', href: '/about' },
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Contact', href: '/contact' },
-];
 
 export function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const location = useLocation();
+    const t = useTranslation();
+
+
+    const navLinks = [
+        { name: t.nav.home, href: '/' },
+        { name: t.nav.services, href: '/services' },
+        { name: t.nav.about, href: '/about' },
+        { name: t.nav.portfolio, href: '/portfolio' },
+        { name: t.nav.contact, href: '/contact' },
+    ];
 
     const isActive = (href: string) => location.pathname === href;
 
@@ -24,7 +27,7 @@ export function Navbar() {
         <nav className="fixed top-0 left-0 right-0 z-50 bg-offwhite/95 backdrop-blur-sm border-b border-steel/20 shadow-sm">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
-                    {/* Logo - larger, natural colors */}
+                    {/* Logo */}
                     <Link to="/" className="flex items-center">
                         <img
                             src="https://firebasestorage.googleapis.com/v0/b/master-contractor-79b5c.firebasestorage.app/o/Logo%2Fmaester%20contractor%201%20bcard.png?alt=media&token=3fb4474a-24f0-4b28-9a51-a2aaac81ab67"
@@ -33,7 +36,7 @@ export function Navbar() {
                         />
                     </Link>
 
-                    {/* Desktop Navigation - dark text on light bg */}
+                    {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
                             <Link
@@ -57,7 +60,7 @@ export function Navbar() {
                             <span className="text-sm font-medium">(956) 525-9866</span>
                         </a>
                         <Button asChild className="bg-copper hover:bg-copper-dark text-white font-semibold">
-                            <Link to="/free-inspection">Free Quote</Link>
+                            <Link to="/free-inspection">{t.nav.freeQuote}</Link>
                         </Button>
                     </div>
 
@@ -71,10 +74,13 @@ export function Navbar() {
                 </div>
             </div>
 
-            {/* Mobile Menu - light background */}
+            {/* Mobile Menu */}
             {mobileMenuOpen && (
                 <div className="md:hidden bg-offwhite border-t border-steel/20">
                     <div className="px-4 py-4 space-y-3">
+                        <div className="pb-3">
+                            <LanguageToggle />
+                        </div>
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
@@ -91,7 +97,7 @@ export function Navbar() {
                         <div className="pt-4 border-t border-steel/20">
                             <Button asChild className="w-full bg-copper hover:bg-copper-dark text-white font-semibold">
                                 <Link to="/free-inspection" onClick={() => setMobileMenuOpen(false)}>
-                                    Get Free Quote
+                                    {t.nav.freeQuote}
                                 </Link>
                             </Button>
                         </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Language } from '@/lib/translations';
+import { Language } from '@/types/language';
 
 const STORAGE_KEY = 'master-contractor-lang';
 

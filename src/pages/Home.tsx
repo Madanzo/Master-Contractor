@@ -3,42 +3,45 @@ import { ArrowRight, Shield, Clock, Award, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/layout/Navbar';
 import SiteFooter from '@/components/layout/SiteFooter';
-
-const stats = [
-    { value: '11+', label: 'Years Experience' },
-    { value: '500+', label: 'Projects Completed' },
-    { value: '100%', label: 'Licensed & Insured' },
-    { value: '24/7', label: 'Support Available' },
-];
-
-const services = [
-    {
-        title: 'Roofing',
-        description: 'Complete roofing solutions for residential and commercial properties.',
-        icon: Shield,
-        href: '/services/roofing',
-    },
-    {
-        title: 'Commercial Construction',
-        description: 'Full-scale commercial building and renovation projects.',
-        icon: Award,
-        href: '/services/commercial',
-    },
-    {
-        title: 'Residential Construction',
-        description: 'Custom homes and home improvement services.',
-        icon: Users,
-        href: '/services/residential',
-    },
-    {
-        title: 'Project Management',
-        description: 'Expert oversight from planning to completion.',
-        icon: Clock,
-        href: '/services',
-    },
-];
+import { useTranslation } from '@/hooks/useTranslation';
 
 const Home = () => {
+    const t = useTranslation();
+
+    const stats = [
+        { value: '11+', label: t.home.yearsExperience },
+        { value: '500+', label: t.home.projectsCompleted },
+        { value: '100%', label: t.home.licensedInsured },
+        { value: '24/7', label: t.home.supportAvailable },
+    ];
+
+    const services = [
+        {
+            title: t.home.roofing,
+            description: t.home.roofingDesc,
+            icon: Shield,
+            href: '/services/roofing',
+        },
+        {
+            title: t.home.commercial,
+            description: t.home.commercialDesc,
+            icon: Award,
+            href: '/services/commercial',
+        },
+        {
+            title: t.home.residential,
+            description: t.home.residentialDesc,
+            icon: Users,
+            href: '/services/residential',
+        },
+        {
+            title: t.home.projectManagement,
+            description: t.home.projectManagementDesc,
+            icon: Clock,
+            href: '/services',
+        },
+    ];
+
     return (
         <div className="min-h-screen bg-charcoal">
             <Navbar />
@@ -53,20 +56,20 @@ const Home = () => {
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
-                        Building Your Dreams
-                        <span className="block text-copper">Into Reality</span>
+                        {t.home.heroTitle}
+                        <span className="block text-copper">{t.home.heroTitleAccent}</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-offwhite/80 mb-8 max-w-3xl mx-auto">
-                        Trusted by families and businesses across the Valley. Bilingual crews, on-time delivery, and craftsmanship that stands the test of time.
+                        {t.home.heroSubtitle}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button asChild size="lg" className="bg-copper hover:bg-copper-dark text-charcoal font-semibold text-lg px-8 py-6 h-auto">
                             <Link to="/free-inspection">
-                                Get Free Quote <ArrowRight className="ml-2 w-5 h-5" />
+                                {t.home.getQuote} <ArrowRight className="ml-2 w-5 h-5" />
                             </Link>
                         </Button>
                         <Button asChild size="lg" variant="outline" className="border-slate-600 text-white hover:bg-charcoal text-lg px-8 py-6 h-auto">
-                            <Link to="/portfolio">View Our Work</Link>
+                            <Link to="/portfolio">{t.home.viewWork}</Link>
                         </Button>
                     </div>
                 </div>
@@ -102,10 +105,10 @@ const Home = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                            Our Services
+                            {t.home.ourServices}
                         </h2>
                         <p className="text-steel text-lg max-w-2xl mx-auto">
-                            Comprehensive construction solutions for every project size and scope.
+                            {t.home.servicesSubtitle}
                         </p>
                     </div>
 
@@ -129,7 +132,7 @@ const Home = () => {
 
                     <div className="text-center mt-12">
                         <Button asChild variant="outline" className="border-slate-600 text-white hover:bg-charcoal">
-                            <Link to="/services">View All Services <ArrowRight className="ml-2 w-4 h-4" /></Link>
+                            <Link to="/services">{t.home.viewAllServices} <ArrowRight className="ml-2 w-4 h-4" /></Link>
                         </Button>
                     </div>
                 </div>
@@ -139,13 +142,13 @@ const Home = () => {
             <section className="py-20 bg-copper">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
-                        Ready to Start Your Project?
+                        {t.home.readyToStart}
                     </h2>
                     <p className="text-charcoal text-lg mb-8">
-                        Get a free consultation and quote today. No obligations.
+                        {t.home.ctaSubtitle}
                     </p>
                     <Button asChild size="lg" className="bg-charcoal hover:bg-charcoal text-white font-semibold text-lg px-8 py-6 h-auto">
-                        <Link to="/contact">Contact Us Today</Link>
+                        <Link to="/contact">{t.home.contactUsToday}</Link>
                     </Button>
                 </div>
             </section>
