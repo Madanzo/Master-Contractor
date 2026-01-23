@@ -6,7 +6,7 @@ import { LanguageProvider, useLanguageContext } from '@/contexts/LanguageContext
 import { trackLead } from '@/lib/pixel';
 import LanguageToggle from '@/components/LanguageToggle';
 
-const PHONE_NUMBER = '+19565551234'; // Replace with actual phone number
+const PHONE_NUMBER = '+19565259866'; // Replace with actual phone number
 
 const translations = {
   en: {
@@ -127,7 +127,7 @@ const ThankYouContent = () => {
             className="bg-white text-primary hover:bg-white/90 px-8 py-3 text-xl font-bold inline-flex items-center gap-2"
           >
             <Phone className="w-6 h-6" />
-            (956) 555-1234
+            (956) 525-9866
           </Button>
         </div>
 

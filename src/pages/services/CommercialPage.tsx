@@ -80,7 +80,7 @@ const CommercialPage = () => {
                             variant="outline"
                             className="border-slate-500 text-white hover:bg-white/10 text-lg px-8 py-6 h-auto"
                         >
-                            <a href="tel:+19565551234">
+                            <a href="tel:+19565259866">
                                 <Phone className="mr-2 w-5 h-5" /> Call Now
                             </a>
                         </Button>
@@ -251,8 +251,8 @@ const CommercialPage = () => {
                             size="lg"
                             className="bg-charcoal hover:bg-charcoal/90 text-white font-semibold"
                         >
-                            <a href="tel:+19565551234">
-                                <Phone className="mr-2 w-5 h-5" /> (956) 555-1234
+                            <a href="tel:+19565259866">
+                                <Phone className="mr-2 w-5 h-5" /> (956) 525-9866
                             </a>
                         </Button>
                         <Button

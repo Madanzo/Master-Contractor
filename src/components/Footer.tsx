@@ -1,7 +1,7 @@
 import { useLanguageContext } from '@/contexts/LanguageContext';
 import { translations, getTranslation } from '@/lib/translations';
 
-const PHONE_NUMBER = '(956) 555-1234'; // Replace with actual phone number
+const PHONE_NUMBER = '(956) 525-9866'; // Replace with actual phone number
 
 const Footer = () => {
   const { language } = useLanguageContext();

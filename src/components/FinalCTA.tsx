@@ -4,7 +4,7 @@ import { useLanguageContext } from '@/contexts/LanguageContext';
 import { translations, getTranslation } from '@/lib/translations';
 import { trackContact } from '@/lib/pixel';
 
-const PHONE_NUMBER = '+19565551234'; // Replace with actual phone number
+const PHONE_NUMBER = '+19565259866'; // Replace with actual phone number
 
 const FinalCTA = () => {
   const { language } = useLanguageContext();

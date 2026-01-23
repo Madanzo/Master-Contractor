@@ -6,7 +6,7 @@ import { trackContact } from '@/lib/pixel';
 import LanguageToggle from './LanguageToggle';
 import heroBg from '@/assets/hero-bg.jpg';
 
-const PHONE_NUMBER = '+19565551234'; // Replace with actual phone number
+const PHONE_NUMBER = '+19565259866'; // Replace with actual phone number
 
 const Hero = () => {
   const { language } = useLanguageContext();

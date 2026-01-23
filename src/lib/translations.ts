@@ -160,7 +160,7 @@ export const translations = {
     },
     fields: {
       name: { en: "Your Name", es: "Tu Nombre" },
-      phone: { en: "(956) 555-1234", es: "(956) 555-1234" },
+      phone: { en: "(956) 525-9866", es: "(956) 525-9866" },
       city: { en: "Select Your City", es: "Selecciona Tu Ciudad" },
       service: { en: "What do you need?", es: "¿Qué necesitas?" }
     },

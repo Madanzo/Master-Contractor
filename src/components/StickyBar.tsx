@@ -4,7 +4,7 @@ import { translations, getTranslation } from '@/lib/translations';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { trackContact } from '@/lib/pixel';
 
-const PHONE_NUMBER = '+19565551234'; // Replace with actual phone number
+const PHONE_NUMBER = '+19565259866'; // Replace with actual phone number
 
 const StickyBar = () => {
   const { language } = useLanguageContext();
