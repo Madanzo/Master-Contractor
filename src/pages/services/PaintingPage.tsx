@@ -41,7 +41,7 @@ const PaintingPage = () => {
     const badges = [
         t.servicePage.freeEstimates,
         t.servicePage.licensedInsured,
-        t.servicePage.premiumPaints,
+        t.servicePage.financingAvailable,
         t.servicePage.bilingualTeam
     ];
 

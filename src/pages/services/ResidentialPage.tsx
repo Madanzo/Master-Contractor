@@ -84,7 +84,7 @@ const ResidentialPage = () => {
 
                     {/* Trust Badges */}
                     <div className="flex flex-wrap justify-center gap-4">
-                        {['Free Estimates', 'Licensed & Insured', 'Bilingual Crews', 'Quality Guaranteed'].map((badge) => (
+                        {['Free Estimates', 'Licensed & Insured', 'Financing Available', 'Bilingual Crews'].map((badge) => (
                             <div key={badge} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
                                 <CheckCircle className="w-4 h-4 text-copper" />
                                 <span className="text-sm text-white">{badge}</span>

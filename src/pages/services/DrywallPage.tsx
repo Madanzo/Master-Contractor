@@ -41,7 +41,7 @@ const DrywallPage = () => {
     const badges = [
         t.servicePage.freeEstimates,
         t.servicePage.licensedInsured,
-        t.servicePage.qualityGuaranteed,
+        t.servicePage.financingAvailable,
         t.servicePage.bilingualTeam
     ];
 

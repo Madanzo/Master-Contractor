@@ -41,7 +41,7 @@ const ElectricalPage = () => {
     const badges = [
         t.servicePage.licensedElectricians,
         t.servicePage.freeEstimates,
-        t.servicePage.emergencyService,
+        t.servicePage.financingAvailable,
         t.servicePage.bilingualTeam
     ];
 

@@ -41,7 +41,7 @@ const PlumbingPage = () => {
     const badges = [
         t.servicePage.licensedPlumbers,
         t.servicePage.freeEstimates,
-        t.servicePage.emergencyService,
+        t.servicePage.financingAvailable,
         t.servicePage.bilingualTeam
     ];
 
