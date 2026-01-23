@@ -27,6 +27,7 @@ export const translations = {
     fast: { en: "Same-Week Scheduling", es: "Citas Esta Semana" },
     local: { en: "Local RGV Crews", es: "Equipo Local del Valle" },
     licensed: { en: "Licensed & Insured", es: "Licencia y Seguro" },
+    financing: { en: "Financing Available", es: "Financiamiento Disponible" },
     bilingual: { en: "Hablamos Español", es: "We Speak English" }
   },
 

@@ -23,8 +23,8 @@ const Hero = () => {
   const trustBadges = [
     { key: 'free', icon: '✓' },
     { key: 'fast', icon: '✓' },
-    { key: 'local', icon: '✓' },
     { key: 'licensed', icon: '✓' },
+    { key: 'financing', icon: '✓' },
     { key: 'bilingual', icon: '✓' },
   ] as const;
 
