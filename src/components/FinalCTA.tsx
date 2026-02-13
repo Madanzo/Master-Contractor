@@ -1,21 +1,26 @@
-import { Phone } from 'lucide-react';
+import { Phone, Calendar } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useLanguageContext } from '@/contexts/LanguageContext';
 import { translations, getTranslation } from '@/lib/translations';
 import { trackContact } from '@/lib/pixel';
+import { trackGAEvent } from '@/lib/analytics';
 
-const PHONE_NUMBER = '+19565259866'; // Replace with actual phone number
+const PHONE_NUMBER = '9565259866';
 
 const FinalCTA = () => {
   const { language } = useLanguageContext();
+  const navigate = useNavigate();
 
   const handleCallClick = () => {
     trackContact('phone');
+    trackGAEvent('call_now_click', { page_location: window.location.pathname });
     window.location.href = `tel:${PHONE_NUMBER}`;
   };
 
-  const scrollToForm = () => {
-    document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' });
+  const handleBookNowClick = () => {
+    trackGAEvent('book_now_click', { page_location: window.location.pathname });
+    navigate('/roofing/scheduling');
   };
 
   return (
@@ -31,10 +36,11 @@ const FinalCTA = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             size="lg"
-            onClick={scrollToForm}
+            onClick={handleBookNowClick}
             className="text-lg px-8 py-6 h-auto"
           >
-            {getTranslation(translations.hero.ctaPrimary, language)}
+            <Calendar className="w-5 h-5 mr-2" />
+            {getTranslation(translations.hero.ctaBookNow, language)}
           </Button>
           <Button
             size="lg"

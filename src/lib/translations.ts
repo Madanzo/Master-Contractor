@@ -18,6 +18,30 @@ export const translations = {
     ctaSecondary: {
       en: "Call Now",
       es: "Llamar Ahora"
+    },
+    ctaWhatsApp: {
+      en: "Message Us on WhatsApp",
+      es: "Escríbenos por WhatsApp"
+    },
+    ctaWhatsAppSub: {
+      en: "Get a response in minutes",
+      es: "Respuesta en minutos"
+    },
+    ctaBookNow: {
+      en: "Book Your Free Inspection",
+      es: "Reserva Tu Inspección Gratis"
+    },
+    ctaBookNowSub: {
+      en: "Pick a date that works for you",
+      es: "Elige una fecha que te funcione"
+    },
+    ctaCallNow: {
+      en: "Call Now: (956) 525-9866",
+      es: "Llama Ahora: (956) 525-9866"
+    },
+    heroBadges: {
+      en: ["Free Inspection", "No Obligation", "Hablamos Español"],
+      es: ["Inspección Gratis", "Sin Compromiso", "We Speak English"]
     }
   },
 
@@ -137,8 +161,8 @@ export const translations = {
   // Local Trust
   localTrust: {
     headline: {
-      en: "Proudly Based in Brownsville, Serving the Entire Rio Grande Valley",
-      es: "Orgullosamente de Brownsville, Sirviendo Todo el Valle del Río Grande"
+      en: "Proudly Based in Brownsville, Serving the Entire RGV & Major Texas Cities",
+      es: "Orgullosamente de Brownsville, Sirviendo el Valle Y Principales Ciudades de Texas"
     },
     description: {
       en: "We're not a franchise or a 1-800 number. We're your neighbors. Our crews live and work in the Valley, and we treat your home like our own.",
@@ -147,7 +171,7 @@ export const translations = {
   },
 
   // Cities
-  cities: ["Brownsville", "Harlingen", "San Benito", "Weslaco", "McAllen", "Edinburg", "Pharr", "Mission"],
+  cities: ["Brownsville", "Harlingen", "San Benito", "Weslaco", "McAllen", "Edinburg", "Pharr", "Mission", "Dallas", "Houston", "Austin", "San Antonio", "Other"],
 
   // Lead Form
   form: {
@@ -222,8 +246,8 @@ export const translations = {
       {
         question: { en: "What areas do you serve?", es: "¿Qué áreas cubren?" },
         answer: {
-          en: "We serve the entire Rio Grande Valley including Brownsville, Harlingen, San Benito, Weslaco, McAllen, Edinburg, Pharr, and Mission.",
-          es: "Servimos todo el Valle del Río Grande incluyendo Brownsville, Harlingen, San Benito, Weslaco, McAllen, Edinburg, Pharr y Mission."
+          en: "We serve the entire Rio Grande Valley including Brownsville, Harlingen, San Benito, Weslaco, McAllen, Edinburg, Pharr, and Mission. We also serve major Texas cities including Dallas, Houston, Austin, and San Antonio.",
+          es: "Servimos todo el Valle del Río Grande incluyendo Brownsville, Harlingen, San Benito, Weslaco, McAllen, Edinburg, Pharr y Mission. También servimos en Dallas, Houston, Austin y San Antonio."
         }
       },
       {
@@ -258,7 +282,7 @@ export const translations = {
   // Sticky Bar
   stickyBar: {
     call: { en: "Call Now", es: "Llamar Ahora" },
-    quote: { en: "Free Quote", es: "Cotización Gratis" }
+    quote: { en: "Book Now", es: "Reservar Ahora" }
   },
 
   // Thank You Page
@@ -306,12 +330,99 @@ export const translations = {
   footer: {
     company: "Master Contractor",
     tagline: {
-      en: "Serving the Rio Grande Valley",
-      es: "Sirviendo el Valle del Río Grande"
+      en: "Serving the Rio Grande Valley & Texas",
+      es: "Sirviendo el Valle del Río Grande y Texas"
     },
     rights: {
       en: "All rights reserved.",
       es: "Todos los derechos reservados."
+    }
+  },
+
+  // Scheduling Page
+  scheduling: {
+    headline: {
+      en: "Schedule Your Free Roof Inspection",
+      es: "Programa Tu Inspección de Techo Gratis"
+    },
+    subheadline: {
+      en: "Fill out your info and pick a time that works for you.",
+      es: "Completa tu información y elige un horario que te funcione."
+    },
+    fields: {
+      name: { en: "Your Name", es: "Tu Nombre" },
+      namePlaceholder: { en: "Your full name", es: "Tu nombre completo" },
+      phone: { en: "Phone Number", es: "Número de Teléfono" },
+      phonePlaceholder: { en: "(956) 555-1234", es: "(956) 555-1234" },
+      city: { en: "Your City", es: "Tu Ciudad" },
+      cityPlaceholder: { en: "Select your city", es: "Selecciona tu ciudad" },
+      issue: { en: "Describe Your Roof Issue (Optional)", es: "Describe el Problema de tu Techo (Opcional)" },
+      issuePlaceholder: { en: "Tell us about your roof issue (optional)", es: "Cuéntanos sobre el problema de tu techo (opcional)" }
+    },
+    submit: {
+      en: "Schedule My Free Inspection",
+      es: "Programar Mi Inspección Gratis"
+    },
+    submitting: {
+      en: "Scheduling...",
+      es: "Programando..."
+    },
+    guarantees: {
+      en: ["100% Free Inspection", "No Obligation to Buy", "No Pressure Sales", "Written Estimate Included"],
+      es: ["Inspección 100% Gratis", "Sin Obligación de Compra", "Sin Presión de Venta", "Presupuesto Escrito Incluido"]
+    },
+    errors: {
+      name: { en: "Please enter your name", es: "Por favor ingresa tu nombre" },
+      phone: { en: "Please enter a valid 10-digit phone number", es: "Por favor ingresa un número de 10 dígitos" },
+      city: { en: "Please select your city", es: "Por favor selecciona tu ciudad" }
+    }
+  },
+
+  // Roofing Thank You Page
+  roofingThankYou: {
+    title: {
+      en: "You're All Set!",
+      es: "¡Todo Listo!"
+    },
+    titleWithName: {
+      en: (name: string) => `You're All Set, ${name}!`,
+      es: (name: string) => `¡Todo Listo, ${name}!`
+    },
+    subtitle: {
+      en: "Your free roof inspection is scheduled.",
+      es: "Tu inspección de techo gratis está programada."
+    },
+    appointmentLabel: {
+      en: "Your Appointment",
+      es: "Tu Cita"
+    },
+    whatNextTitle: {
+      en: "What Happens Next?",
+      es: "¿Qué Sigue?"
+    },
+    steps: {
+      en: [
+        { title: "We'll Call You", desc: "We'll call you within 2 hours to confirm your appointment details." },
+        { title: "Roof Inspection", desc: "Our inspector will arrive at your scheduled time and assess your roof (takes 30-45 min)." },
+        { title: "Written Estimate", desc: "You'll receive a written estimate with photos and recommendations — no obligation." }
+      ],
+      es: [
+        { title: "Te Llamamos", desc: "Te llamaremos en las próximas 2 horas para confirmar los detalles de tu cita." },
+        { title: "Inspección del Techo", desc: "Nuestro inspector llegará a la hora programada y evaluará tu techo (toma 30-45 min)." },
+        { title: "Presupuesto Escrito", desc: "Recibirás un presupuesto escrito con fotos y recomendaciones — sin compromiso." }
+      ]
+    },
+    questionsLabel: {
+      en: "Questions? Call us:",
+      es: "¿Preguntas? Llámanos:"
+    },
+    callNow: {
+      en: "Call Now",
+      es: "Llamar Ahora"
+    },
+    whatsApp: {
+      en: "Message Us on WhatsApp",
+      es: "Escríbenos por WhatsApp"
     }
   }
 };

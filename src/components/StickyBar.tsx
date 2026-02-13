@@ -1,22 +1,27 @@
-import { Phone, FileText } from 'lucide-react';
+import { Phone, Calendar } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useLanguageContext } from '@/contexts/LanguageContext';
 import { translations, getTranslation } from '@/lib/translations';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { trackContact } from '@/lib/pixel';
+import { trackGAEvent } from '@/lib/analytics';
 
-const PHONE_NUMBER = '+19565259866'; // Replace with actual phone number
+const PHONE_NUMBER = '9565259866';
 
 const StickyBar = () => {
   const { language } = useLanguageContext();
+  const navigate = useNavigate();
   const isScrolled = useScrollPosition(window.innerHeight);
 
   const handleCallClick = () => {
     trackContact('phone');
+    trackGAEvent('call_now_click', { page_location: window.location.pathname });
     window.location.href = `tel:${PHONE_NUMBER}`;
   };
 
-  const scrollToForm = () => {
-    document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' });
+  const handleBookNowClick = () => {
+    trackGAEvent('book_now_click', { page_location: window.location.pathname });
+    navigate('/roofing/scheduling');
   };
 
   if (!isScrolled) return null;
@@ -32,10 +37,10 @@ const StickyBar = () => {
           {getTranslation(translations.stickyBar.call, language)}
         </button>
         <button
-          onClick={scrollToForm}
+          onClick={handleBookNowClick}
           className="flex-1 flex items-center justify-center gap-2 py-4 bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
         >
-          <FileText className="w-5 h-5" />
+          <Calendar className="w-5 h-5" />
           {getTranslation(translations.stickyBar.quote, language)}
         </button>
       </div>

@@ -24,6 +24,10 @@ import PaintingPage from "./pages/services/PaintingPage";
 // Lead Gen Landing Page (independent)
 import Index from "./pages/Index";
 import ThankYou from "./pages/ThankYou";
+import SchedulingPage from "./pages/SchedulingPage";
+import RoofingThankYou from "./pages/RoofingThankYou";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 
 // Admin
 import NotFound from "./pages/NotFound";
@@ -31,6 +35,7 @@ import Login from "./pages/admin/Login";
 import { ProtectedRoute } from "./components/admin/ProtectedRoute";
 import { DashboardLayout } from "./components/admin/DashboardLayout";
 import { LeadsTable } from "./components/admin/LeadsTable";
+import AutomationPage from "./pages/admin/Automation";
 
 const queryClient = new QueryClient();
 
@@ -60,8 +65,14 @@ const App = () => (
 
             {/* Lead Gen Landing Page (independent) */}
             <Route path="/free-inspection" element={<Index />} />
+            <Route path="/roofing/scheduling" element={<SchedulingPage />} />
+            <Route path="/roofing/thank-you" element={<RoofingThankYou />} />
             <Route path="/roofing" element={<Index />} />
             <Route path="/thank-you" element={<ThankYou />} />
+
+            {/* Legal Pages */}
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
 
             {/* Auth */}
             <Route path="/login" element={<Login />} />
@@ -71,6 +82,13 @@ const App = () => (
               <ProtectedRoute>
                 <DashboardLayout>
                   <LeadsTable />
+                </DashboardLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/automation" element={
+              <ProtectedRoute>
+                <DashboardLayout>
+                  <AutomationPage />
                 </DashboardLayout>
               </ProtectedRoute>
             } />
