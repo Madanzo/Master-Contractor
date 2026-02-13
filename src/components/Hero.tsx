@@ -101,10 +101,10 @@ const Hero = () => {
                 style={{ backgroundColor: '#25D366', color: '#fff' }}
               >
                 <div className="flex items-center gap-3 w-full">
-                  <MessageCircle className="w-7 h-7 shrink-0" />
+                  <div className="text-3xl shrink-0">💬</div>
                   <div className="text-left">
                     <div className="text-lg font-bold">
-                      💬 {getTranslation(translations.hero.ctaWhatsApp, language)}
+                      {getTranslation(translations.hero.ctaWhatsApp, language)}
                     </div>
                     <div className="text-sm font-normal opacity-90">
                       {getTranslation(translations.hero.ctaWhatsAppSub, language)}
@@ -120,10 +120,10 @@ const Hero = () => {
                 className="w-full h-auto py-4 px-6 text-lg font-bold bg-primary hover:bg-primary/90 rounded-xl shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl"
               >
                 <div className="flex items-center gap-3 w-full">
-                  <Calendar className="w-7 h-7 shrink-0" />
+                  <div className="text-3xl shrink-0">📅</div>
                   <div className="text-left">
                     <div className="text-lg font-bold">
-                      📅 {getTranslation(translations.hero.ctaBookNow, language)}
+                      {getTranslation(translations.hero.ctaBookNow, language)}
                     </div>
                     <div className="text-sm font-normal opacity-90">
                       {getTranslation(translations.hero.ctaBookNowSub, language)}
