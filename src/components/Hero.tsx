@@ -141,7 +141,7 @@ const Hero = () => {
               >
                 <div className="flex items-center gap-3">
                   <Phone className="w-6 h-6 shrink-0" />
-                  <span>📞 {getTranslation(translations.hero.ctaCallNow, language)}</span>
+                  <span>{getTranslation(translations.hero.ctaCallNow, language)}</span>
                 </div>
               </Button>
 

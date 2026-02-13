@@ -36,8 +36,8 @@ export const translations = {
       es: "Elige una fecha que te funcione"
     },
     ctaCallNow: {
-      en: "Call Now: (956) 525-9866",
-      es: "Llama Ahora: (956) 525-9866"
+      en: "Call Now",
+      es: "Llamar Ahora"
     },
     heroBadges: {
       en: ["Free Inspection", "No Obligation", "Hablamos Español"],
