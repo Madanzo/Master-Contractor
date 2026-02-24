@@ -16,11 +16,13 @@ const Hero = () => {
 
   const handleCallClick = () => {
     trackContact('phone');
+    trackLead(); // fire Meta Lead event on call clicks
     trackGAEvent('call_now_click', { page_location: window.location.pathname });
     window.location.href = `tel:${PHONE_NUMBER}`;
   };
 
   const handleWhatsAppClick = () => {
+    trackLead(); // fire Meta Lead event on WhatsApp clicks
     trackGAEvent('whatsapp_click', { page_location: window.location.pathname });
     window.open(WHATSAPP_LINK, '_blank');
   };
